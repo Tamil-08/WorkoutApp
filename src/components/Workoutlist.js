@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import video1 from '../assets/solo2.mp4';
 
 const workouts = [
-  { name: 'Push-ups', reps: 100, icon: '💪', completed: 30 },
-  { name: 'Sit-ups', reps: 100, icon: '🪙', completed: 60 },
-  { name: 'Squats', reps: 100, icon: '🦵', completed: 45 },
-  { name: 'Crunches', reps: 100, icon: '🤸', completed: 10 },
+  { name: 'Push-ups', reps: 100, completed: 30 },
+  { name: 'Sit-ups', reps: 100, completed: 60 },
+  { name: 'Squats', reps: 100,  completed: 45 },
+  { name: 'Crunches', reps: 100, completed: 10 },
 ];
 
 const WorkoutList = () => {
