@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+
+//import './App.css';
+
+
+
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import LandingPage from './components/Landingpage';
+import WorkoutList from './components/Workoutlist';
+
+import Nav from './components/Navbar';
+import Footer from './components/Footer';
+import WorkoutDetail from './components/WorkoutDetail';
+
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+      <Nav /> {/* Always visible */}
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+          <Route path="/workouts" element={<WorkoutList />} />
+           <Route path="/workout/:name" element={<WorkoutDetail />} />
+      </Routes>
+       <Footer/>
+    </Router>
+
+
+
+
+
+  
+ </>
   );
+
 }
+
 
 export default App;

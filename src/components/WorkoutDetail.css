@@ -1,0 +1,64 @@
+.detail-container {
+  text-align: center;
+  padding: 30px;
+  color: white;
+  background-color: #111;
+  min-height: 100vh;
+}
+
+.workout-video {
+  width: 90%;
+  max-width: 500px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #00ffe1;
+}
+
+.counter-display {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.done-text {
+  color: #00ff90;
+  font-size: 20px;
+  margin-top: 10px;
+}
+.detail-container {
+  text-align: center;
+  padding: 40px;
+  background-color: #111;
+  min-height: 100vh;
+  color: white;
+}
+
+.workout-image {
+  max-width: 350px;
+  width: 90%;
+  margin: 20px auto;
+  border-radius: 16px;
+  box-shadow: 0 0 15px #00ffcc;
+}
+
+.rep-count {
+  font-size: 48px;
+  color: #00ffcc;
+}
+
+.rep-btn {
+  background: #00ffcc;
+  color: #000;
+  padding: 12px 30px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.done-text {
+  font-size: 20px;
+  color: #00ff90;
+  margin-top: 20px;
+}
+
