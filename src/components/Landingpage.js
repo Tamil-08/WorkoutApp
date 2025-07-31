@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 import './Landingpage.css';
 import video from '../assets/solo.mp4';
-import DailyQuest from './DailyQuest';
-import WorkoutList from './Workoutlist';
 import { useNavigate } from 'react-router-dom';
+import FeaturesSection from './Features.js';
+import AboutSection from './Aboutsection.js';
 
 const LandingPage = () => {
   const navigate = useNavigate();
 
   const handleArise = () => {
-    navigate('/workouts'); // navigate to new route
+    navigate('/workouts');
   };
 
   return (
@@ -26,6 +26,10 @@ const LandingPage = () => {
           <Button size="lg" className="mt-3" onClick={handleArise}>Arise</Button>
         </Container>
       </div>
+
+      {/* 🔥 Add new sections below hero */}
+      <FeaturesSection />
+      <AboutSection />
     </>
   );
 };
