@@ -1,92 +1,44 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import './WorkoutDetail.css';
 
-import pushups from '../assets/pushups.png';
-import situps from '../assets/sit ups.png';
-import squats from '../assets/squats.png';
-import crunches from '../assets/crunches.png';
+import pushupsImg from '../assets/pushups.png';
+import situpsImg from '../assets/situps.png';
+import squatsImg from '../assets/squats.png';
+import crunchesImg from '../assets/crunches.png';
 
-const workoutImages = {
-  'Push-ups': pushups,
-  'Sit-ups': situps,
-  'Squats': squats,
-  'Crunches': crunches,
+const levelReps = {
+  beginner: 25,
+  intermediate: 50,
+  expert: 100
 };
 
-const workoutOrder = ['Push-ups', 'Sit-ups', 'Squats', 'Crunches'];
+const imageMap = {
+  'Push-ups': pushupsImg,
+  'Sit-ups': situpsImg,
+  'Squats': squatsImg,
+  'Crunches': crunchesImg
+};
 
 const WorkoutDetail = () => {
-  const { name } = useParams();
+  const { name, level } = useParams();
   const [count, setCount] = useState(0);
-  const [started, setStarted] = useState(false);
-  const [completed, setCompleted] = useState(false);
-  const intervalRef = useRef(null);
-  const navigate = useNavigate();
 
-  // Save progress
-  const updateProgress = (completedReps) => {
-    const saved = JSON.parse(localStorage.getItem('fitProgress')) || workoutOrder.map(w => ({
-      name: w,
-      completed: 0,
-    }));
-    const updated = saved.map(w =>
-      w.name === name ? { ...w, completed: completedReps } : w
-    );
-    localStorage.setItem('fitProgress', JSON.stringify(updated));
+  const totalReps = levelReps[level] || 25;
+  const image = imageMap[name] || pushupsImg;
+
+  const handleRep = () => {
+    if (count < totalReps) setCount(prev => prev + 1);
   };
-
-  const startWorkout = () => {
-    setStarted(true);
-    intervalRef.current = setInterval(() => {
-      setCount(prev => {
-        const next = prev + 1;
-        updateProgress(next);
-        if (next >= 100) {
-          clearInterval(intervalRef.current);
-          setCompleted(true);
-
-          // Go to next workout
-          setTimeout(() => {
-            const currentIndex = workoutOrder.indexOf(name);
-            const nextWorkout = workoutOrder[currentIndex + 1];
-            if (nextWorkout) {
-              navigate(`/workout/${nextWorkout}`);
-            } else {
-              alert("🎉 All workouts completed!");
-              navigate('/');
-            }
-          }, 1500);
-        }
-        return next;
-      });
-    }, 5000); // 5s per rep
-  };
-
-  useEffect(() => {
-    return () => clearInterval(intervalRef.current);
-  }, []);
 
   return (
-    <div className="detail-container">
-      <h2>{name}</h2>
-
-      <img
-        src={workoutImages[name]}
-        alt={name}
-        className="workout-image"
-      />
-
-      <div className="counter-display">
-        <h1 className="rep-count">{count}/100 Reps</h1>
-
-        {!started && !completed && (
-          <button className="rep-btn" onClick={startWorkout}>
-            ▶️ Start Workout
-          </button>
-        )}
-
-        {completed && <p className="done-text">✅ Completed! Moving to next...</p>}
+    <div className="workout-detail">
+      <div className="center-container">
+        <div className="workout-card">
+          <img src={image} alt={name} className="workout-image" />
+        </div>
+        <h2 className="rep-counter">{count}/{totalReps} Reps</h2>
+        <button className="rep-btn" onClick={handleRep}>+1 Rep</button>
       </div>
     </div>
   );

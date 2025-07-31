@@ -10,7 +10,7 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <p>© {new Date().getFullYear()} FitHub. All rights reserved.</p>
+      <p>Fithub@ {new Date().getFullYear()}  All rights reserved.</p>
 
 
       <button className="scroll-top" onClick={scrollToTop} title="Back to top">

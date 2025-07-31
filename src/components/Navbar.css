@@ -68,13 +68,13 @@
   height: 2px;
   left: 0;
   bottom: -4px;
-  background-color: orange;
+  background-color: rgb(255, 0, 0);
   transition: width 0.3s ease;
 }
 
 .navbar-links a:hover,
 .navbar-links a.active {
-  color: orange;
+  color: rgb(255, 255, 255);
 }
 
 .navbar-links a:hover::after,
